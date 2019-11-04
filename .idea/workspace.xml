@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a31693e6-6b08-4058-adae-1e7d98637a24" name="Default Changelist" comment="" />
+    <list default="true" id="a31693e6-6b08-4058-adae-1e7d98637a24" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/annotations/NotNull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Aspect1.aj" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Aspect1.aj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/UserService.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +22,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -23,7 +33,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1T9xILFll2tJrQ8AEdZZ0OR0U5Q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -79,11 +91,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572886031954</updated>
-      <workItem from="1572886034456" duration="1734000" />
+      <workItem from="1572886034456" duration="4984000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
