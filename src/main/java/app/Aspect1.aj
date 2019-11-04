@@ -1,12 +1,20 @@
 package app;
 
+import app.annotations.PublicsLogger;
 import app.annotations.NotNull;
 import app.annotations.NotNullArgs;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.FieldSignature;
 import org.aspectj.lang.reflect.MethodSignature;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Parameter;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public aspect Aspect1 {
 
@@ -41,5 +49,51 @@ public aspect Aspect1 {
         if (fieldValue == null) {
             throw new NullPointerException("There was attempt to assign null value to field \"" + fieldSignature.getName() + "\" in \" " + className + "\" , which has @NotNull attribute ");
         }
+    }
+
+    pointcut logging(): execution(public * *.*(..)) && within(@PublicsLogger *);
+
+    before(): logging() {
+        Logger logger = Logger.getLogger(thisJoinPoint.getThis().getClass().getName());
+        logger.setLevel(Level.FINEST);
+
+        if (logger.getHandlers().length == 0) {
+            ConsoleHandler handler = new ConsoleHandler();
+            handler.setLevel(Level.FINEST);
+            logger.addHandler(handler);
+        }
+
+        MethodSignature signature = (MethodSignature) thisJoinPoint.getSignature();
+        String[] parameterNames = signature.getParameterNames();
+        Class[] parameterTypes = signature.getParameterTypes();
+        String className = signature.getDeclaringType().getName();
+
+        StringBuilder paramsInfo = new StringBuilder();
+
+        for (int i = 0; i < parameterNames.length; i++) {
+            paramsInfo.append(parameterTypes[i].getSimpleName()).append(" ").append(parameterNames[i]);
+
+            if (i < parameterNames.length - 1) {
+                paramsInfo.append(", ");
+            }
+        }
+
+        logger.finest("Calling method " + className + "." + signature.getMethod().getName() + "(" + paramsInfo + ")");
+    }
+
+    after() throwing(Exception e): logging() {
+        Logger logger = Logger.getLogger(thisJoinPoint.getThis().getClass().getName());
+        logger.setLevel(Level.FINEST);
+
+        if (logger.getHandlers().length == 0) {
+            ConsoleHandler handler = new ConsoleHandler();
+            handler.setLevel(Level.FINEST);
+            logger.addHandler(handler);
+        }
+
+        MethodSignature signature = (MethodSignature) thisJoinPoint.getSignature();
+        String className = signature.getDeclaringType().getName();
+
+        logger.finest("Exception occured in " + className + "." + signature.getMethod().getName() + ": " + e);
     }
 }
